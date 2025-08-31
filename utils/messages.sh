@@ -23,24 +23,11 @@ footer() {
 # --- Function: menu ---
 # Usage: menu "Option1" "Option2" "Option3"
 menu() {
-    local title="Main Menu"
-    local prompt="Choose an option:"
-    local height=15
-    local width=50
-    local menu_height=6
-
-    # Build the whiptail options list from arguments
-    local options=()
     local i=1
     for option in "$@"; do
-        options+=("$i" "$option")
+        echo "$i) $option"
         ((i++))
     done
-
-    # Use whiptail to show the menu
-    local choice=$(whiptail --title "$title" --menu "$prompt" $height $width $menu_height "${options[@]}" 3>&1 1>&2 2>&3)
-
-    echo "$choice"
 }
 
 # --- Function: prompt ---
